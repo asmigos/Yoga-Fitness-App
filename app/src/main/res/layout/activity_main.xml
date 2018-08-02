@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnTraining"
-        android:src="@drawable/playBtn"
+        android:src="@drawable/playbtn"
         android:layout_centerInParent="true"/>
     <LinearLayout
         android:layout_alignParentBottom="true"

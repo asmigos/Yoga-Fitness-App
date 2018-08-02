@@ -16,7 +16,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListExercise"></activity>
+        <activity android:name=".ListExercise" />
+        <activity android:name=".ViewExercise" />
+        <activity android:name=".SettingsPage"></activity>
     </application>
 
 </manifest>
