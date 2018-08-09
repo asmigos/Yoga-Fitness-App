@@ -9,12 +9,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.hp.yogafitnessapp.Database.YogaDB;
+import com.example.hp.yogafitnessapp.Utils.Common;
+
 public class ViewExercise extends AppCompatActivity {
     int image_id;
     String name;
     TextView timer, title;
     ImageView detail_image;
     Button btnStart;
+
+    YogaDB yogaDB;
 
     boolean isRunning = false;
 
@@ -28,16 +33,29 @@ public class ViewExercise extends AppCompatActivity {
         detail_image = findViewById(R.id.detail_image);
         btnStart = findViewById(R.id.btnStart);
 
+        yogaDB = new YogaDB(this);
+
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if(!isRunning){
                     btnStart.setText("DONE");
-                    new CountDownTimer(20000,10000){
+
+
+                    int timeLimit = 0;
+                    if(yogaDB.getSettingMode() == 0)
+                        timeLimit = Common.TIME_LIMIT_EASY;
+                    else if(yogaDB.getSettingMode() == 1)
+                        timeLimit = Common.TIME_LIMIT_MEDIUM;
+                    else if(yogaDB.getSettingMode() == 2)
+                        timeLimit = Common.TIME_LIMIT_HARD;
+
+
+                    new CountDownTimer(timeLimit,1000){
 
                     @Override
                     public void onTick(long l) {
-                        timer.setText(""+1/1000);
+                        timer.setText(""+l/1000);
                     }
 
                     @Override

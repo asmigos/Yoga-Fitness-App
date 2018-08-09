@@ -76,6 +76,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewHolder
             public void onClick(View view, int position) {
               // call to new activity
               Intent i = new Intent(context, ViewExercise.class);
+              i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
               i.putExtra("image_id",exerciseList.get(position).getImage_id());
               i.putExtra("name",exerciseList.get(position).getName());
               context.startActivity(i);
